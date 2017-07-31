@@ -1,13 +1,13 @@
 ﻿Public Class frmBarcodeGen
     Dim USER_INPUT As String
     Private Sub btnPrintBarcode_Click(sender As Object, e As EventArgs) Handles btnPrintBarcode.Click
-
         'VERIFING THAT THE TEXTBOX IS NOT EMPTY BEFORE PROCEEDING TO GENERATE BARCODE
         If Not txtUserInput.Text = "" Then
 
 
             'GENERATING A BARCODE ON THE BARCODE CONTROL BY ASSINING THE USER INPUT VALUE TO THE TEXT PROPERTY OF THE BARCODE CONTROL
             Try
+                txtUserInput.Text = txtUserInput.Text.ToUpper
                 USER_INPUT = txtUserInput.Text
                 BarcodeControl.Text = USER_INPUT
                 GenerateAndExportBarcode()

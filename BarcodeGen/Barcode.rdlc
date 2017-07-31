@@ -5,13 +5,14 @@
       <Image Name="Barcode">
         <Source>External</Source>
         <Value>=Parameters!ImageURL.Value</Value>
-        <Top>0.05in</Top>
-        <Left>0.10417in</Left>
-        <Height>0.5in</Height>
-        <Width>1.79479in</Width>
+        <Top>0.025in</Top>
+        <Left>0.0625in</Left>
+        <Height>0.6in</Height>
+        <Width>1.87917in</Width>
         <Style>
           <Border>
             <Style>None</Style>
+            <Width>0.25pt</Width>
           </Border>
         </Style>
       </Image>
@@ -32,14 +33,15 @@
             <Style />
           </Paragraph>
         </Paragraphs>
-        <Top>0.46041in</Top>
-        <Left>0.20833in</Left>
+        <Top>0.54792in</Top>
+        <Left>0.14583in</Left>
         <Height>0.35417in</Height>
-        <Width>1.69063in</Width>
+        <Width>1.6698in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
+            <Width>0.25pt</Width>
           </Border>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
@@ -56,7 +58,7 @@
       </Border>
     </Style>
   </Body>
-  <Width>2in</Width>
+  <Width>2.0125in</Width>
   <Page>
     <PageHeight>1in</PageHeight>
     <PageWidth>2in</PageWidth>
