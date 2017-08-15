@@ -2,23 +2,7 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Image Name="Barcode">
-        <Source>External</Source>
-        <Value>=Parameters!ImageURL.Value</Value>
-        <Top>0.025in</Top>
-        <Left>0.0625in</Left>
-        <Height>0.6in</Height>
-        <Width>1.87917in</Width>
-        <Style>
-          <Border>
-            <Style>None</Style>
-            <Width>0.25pt</Width>
-          </Border>
-        </Style>
-      </Image>
       <Textbox Name="lblPatientInfo">
-        <CanGrow>true</CanGrow>
-        <CanShrink>true</CanShrink>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
@@ -26,29 +10,40 @@
               <TextRun>
                 <Value>=Parameters!lblPatientInfo.Value</Value>
                 <Style>
-                  <FontFamily>Cambria</FontFamily>
+                  <FontFamily>CALIBRI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <Top>0.54792in</Top>
-        <Left>0.14583in</Left>
-        <Height>0.35417in</Height>
-        <Width>1.6698in</Width>
+        <Top>0.51736in</Top>
+        <Left>0.53333in</Left>
+        <Height>0.39722in</Height>
+        <Width>1.95in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Textbox>
+      <Image Name="Barcode">
+        <Source>External</Source>
+        <Value>=Parameters!ImageURL.Value</Value>
+        <Top>0.0625in</Top>
+        <Left>0.54583in</Left>
+        <Height>0.46181in</Height>
+        <Width>1.9375in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
             <Width>0.25pt</Width>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
-      </Textbox>
+      </Image>
     </ReportItems>
     <Height>1in</Height>
     <Style>
@@ -56,12 +51,13 @@
         <Style>None</Style>
         <Width>0.25pt</Width>
       </Border>
+      <BackgroundColor>White</BackgroundColor>
     </Style>
   </Body>
-  <Width>2.0125in</Width>
+  <Width>3in</Width>
   <Page>
     <PageHeight>1in</PageHeight>
-    <PageWidth>2in</PageWidth>
+    <PageWidth>3in</PageWidth>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
