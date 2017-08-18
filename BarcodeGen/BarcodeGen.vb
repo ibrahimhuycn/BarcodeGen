@@ -1,19 +1,23 @@
 ﻿Imports System.Drawing.Printing
 Imports Microsoft.Reporting.WinForms
+
+
 Public Class frmBarcodeGen
     Dim USER_INPUT As String
     Dim BARCODE_LABEL_TEXT As String
     Dim SELECTED_BARCODE_PRINTER As String
+    Dim USER_PROFILE As String = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
+
     Private Shared Function GetRptt() As LocalReport
-        Dim rptt As New LocalReport() With {.ReportPath = "C:\Users\ibrah\OneDrive\Documents\Visual Studio 2015\Projects\BarcodeGen\BarcodeGen\Barcode.rdlc"}
-        rptt.EnableExternalImages = True
+        Dim rptt As New LocalReport() With {.ReportPath = "C:\Users\ibrah\OneDrive\Documents\Visual Studio 2015\Projects\BarcodeGen\BarcodeGen\Barcode.rdlc", .EnableExternalImages = True}
         Return rptt
     End Function
+
     Private Sub btnGeneratePrintBarcode_Click(sender As Object, e As EventArgs) Handles btnGeneratePrintBarcode.Click
         'VERIFING THAT THE TEXTBOX IS NOT EMPTY BEFORE PROCEEDING TO GENERATE BARCODE
 
 
-        Dim rptt As LocalReport = GetRptt()
+
         If Not txtUserInput.Text = "" Then
 
 
@@ -26,9 +30,6 @@ Public Class frmBarcodeGen
                 BARCODE_LABEL_TEXT = USER_INPUT & vbCrLf & txtPateintInfo.Text & vbCrLf & Date.Now.ToString("yyyy/MM/dd HH:mm:ss")
                 GenerateAndExportBarcode()
 
-                If CheckBoxAutoPrint.Checked Then
-                    print_microsoft_report(rptt, 300, 100,, SELECTED_BARCODE_PRINTER)
-                End If
             Catch ex As Exception
                 MsgBox(ex.Message)
             End Try
@@ -39,9 +40,14 @@ Public Class frmBarcodeGen
     End Sub
     Private Sub GenerateAndExportBarcode()
         Dim barcodeimage As Bitmap = New Bitmap(BarcodeControl.Width, BarcodeControl.Height)
-        Dim UserProfile As String = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
-        Dim ImagePath As String = String.Format("{0}\Pictures\Barcodes\{1}.PNG", UserProfile, USER_INPUT)
+        Dim ImagePath As String = String.Format("{0}\Pictures\Barcodes\{1}.PNG", USER_PROFILE, USER_INPUT)
+
+        'TODO: CHECK FOR CHARACTERS THAT WOULD BE CONSIDERED AS INVALID AS A FILE NAME IN WINDOWS... LIKE "/"
+
         Dim ImageURL As New Uri(ImagePath)
+        'CHECK FOR THE PRESENCE OF IMAGESAVEDIR, CREAT IT
+        VerifySaveDir()
+
         BarcodeControl.DrawToBitmap(barcodeimage, BarcodeControl.ClientRectangle)
         barcodeimage.Save(ImagePath)
 
@@ -52,11 +58,13 @@ Public Class frmBarcodeGen
         RptViewer.LocalReport.EnableExternalImages = True
         RptViewer.LocalReport.SetParameters(BarcodeParameters)
         RptViewer.RefreshReport()
+    End Sub
+    Private Sub VerifySaveDir()
+        Dim SaveDir As String = USER_PROFILE & "\Pictures\Barcodes"
 
-        Dim rptt As LocalReport = GetRptt()
-        rptt.SetParameters(BarcodeParameters)
-        rptt.Refresh()
-
+        If (Not IO.Directory.Exists(SaveDir)) Then
+            IO.Directory.CreateDirectory(SaveDir)
+        End If
     End Sub
     Private Sub PopulateInstalledPrintersCombo()
         ' Add list of installed printers found to the combo box.
@@ -80,7 +88,10 @@ Public Class frmBarcodeGen
     End Sub
 
     Private Sub frmBarcodeGen_Load(sender As Object, e As EventArgs) Handles Me.Load
-        PopulateInstalledPrintersCombo()
+        PopulateInstalledPrintersCombo()    'POPULATE COMBO WITH A LIST OF INSTALLED PRINTERS
+
+        'IF IMAGE SAVE FOLDER IN NOT PRESENT, CREAT IT.
+        VerifySaveDir()
     End Sub
 
     Private Sub CheckBoxAutoPrint_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBoxAutoPrint.CheckStateChanged
@@ -94,4 +105,5 @@ Public Class frmBarcodeGen
     Private Sub comboInstalledPrinters_EditValueChanged(sender As Object, e As EventArgs) Handles comboInstalledPrinters.EditValueChanged
         SELECTED_BARCODE_PRINTER = comboInstalledPrinters.SelectedItem
     End Sub
+
 End Class

@@ -22,7 +22,7 @@ Partial Class frmBarcodeGen
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim Code128Generator2 As DevExpress.XtraPrinting.BarCode.Code128Generator = New DevExpress.XtraPrinting.BarCode.Code128Generator()
+        Dim Code128Generator1 As DevExpress.XtraPrinting.BarCode.Code128Generator = New DevExpress.XtraPrinting.BarCode.Code128Generator()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBarcodeGen))
         Me.BarcodeControl = New DevExpress.XtraEditors.BarCodeControl()
         Me.txtUserInput = New DevExpress.XtraEditors.TextEdit()
@@ -65,8 +65,8 @@ Partial Class frmBarcodeGen
         Me.BarcodeControl.ShowText = False
         Me.BarcodeControl.ShowToolTips = False
         Me.BarcodeControl.Size = New System.Drawing.Size(151, 41)
-        Code128Generator2.CharacterSet = DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetB
-        Me.BarcodeControl.Symbology = Code128Generator2
+        Code128Generator1.CharacterSet = DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetB
+        Me.BarcodeControl.Symbology = Code128Generator1
         Me.BarcodeControl.TabIndex = 0
         Me.BarcodeControl.TabStop = False
         Me.BarcodeControl.Text = "VCT-2532/J"
@@ -240,6 +240,7 @@ Partial Class frmBarcodeGen
         Me.Controls.Add(Me.TabPaneGenerateBarcode)
         Me.Controls.Add(Me.BarcodeControl)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frmBarcodeGen"
         Me.Text = "Barcode Gen"
