@@ -8,11 +8,6 @@ Public Class frmBarcodeGen
     Dim SELECTED_BARCODE_PRINTER As String
     Dim USER_PROFILE As String = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
 
-    Private Shared Function GetRptt() As LocalReport
-        Dim rptt As New LocalReport() With {.ReportPath = "C:\Users\ibrah\OneDrive\Documents\Visual Studio 2015\Projects\BarcodeGen\BarcodeGen\Barcode.rdlc", .EnableExternalImages = True}
-        Return rptt
-    End Function
-
     Private Sub btnGeneratePrintBarcode_Click(sender As Object, e As EventArgs) Handles btnGeneratePrintBarcode.Click
         'VERIFING THAT THE TEXTBOX IS NOT EMPTY BEFORE PROCEEDING TO GENERATE BARCODE
 
