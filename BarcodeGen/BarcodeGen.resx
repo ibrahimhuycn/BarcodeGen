@@ -117,19 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LabelControl1.Text" xml:space="preserve">
-    <value>As-salamu ‘alaikum wa rahmatullahi wa barakatuh,
-
-This is a simple tool to generate Code 128 barcodes
-from free text. I hope that this helps some of us.
-
-There are some bugs as of now. They will be fixed in 
-future. In-Shaa Allah. Do let me know about any 
-improvement this needs.
-
-IBRAHIM HUSSAIN   :)
-ibrahim.hucyn@live.com</value>
-  </data>
+  <metadata name="PrintDocument.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

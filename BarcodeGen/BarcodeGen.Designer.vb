@@ -41,6 +41,8 @@ Partial Class frmBarcodeGen
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.GroupControlReportPreivew = New DevExpress.XtraEditors.GroupControl()
         Me.RptViewer = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.PrintDocument = New System.Drawing.Printing.PrintDocument()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.txtUserInput.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPateintInfo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.comboInstalledPrinters.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,12 +66,12 @@ Partial Class frmBarcodeGen
         Me.BarcodeControl.Name = "BarcodeControl"
         Me.BarcodeControl.ShowText = False
         Me.BarcodeControl.ShowToolTips = False
-        Me.BarcodeControl.Size = New System.Drawing.Size(151, 41)
-        Code128Generator1.CharacterSet = DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetB
+        Me.BarcodeControl.Size = New System.Drawing.Size(172, 41)
+        Code128Generator1.CharacterSet = DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetAuto
         Me.BarcodeControl.Symbology = Code128Generator1
         Me.BarcodeControl.TabIndex = 0
         Me.BarcodeControl.TabStop = False
-        Me.BarcodeControl.Text = "VCT-2532/J"
+        Me.BarcodeControl.Text = "1-BS123456-P"
         '
         'txtUserInput
         '
@@ -170,6 +172,7 @@ Partial Class frmBarcodeGen
         'TabNavigationPrinterSettings
         '
         Me.TabNavigationPrinterSettings.Caption = "Printer Settings"
+        Me.TabNavigationPrinterSettings.Controls.Add(Me.LabelControl2)
         Me.TabNavigationPrinterSettings.Controls.Add(Me.txtSelectPrinter)
         Me.TabNavigationPrinterSettings.Controls.Add(Me.comboInstalledPrinters)
         Me.TabNavigationPrinterSettings.Controls.Add(Me.CheckBoxAutoPrint)
@@ -198,9 +201,11 @@ Partial Class frmBarcodeGen
         Me.LabelControl1.Appearance.Options.UseFont = True
         Me.LabelControl1.Location = New System.Drawing.Point(3, 3)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(289, 165)
+        Me.LabelControl1.Size = New System.Drawing.Size(282, 135)
         Me.LabelControl1.TabIndex = 0
-        Me.LabelControl1.Text = resources.GetString("LabelControl1.Text")
+        Me.LabelControl1.Text = "As-salamu ‘alaikum wa rahmatullahi wa barakatuh," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Barcode Gen v 1.0.0.6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Last U" &
+    "pdated on: 2/09/2017" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "If you have any suggesstion please let me know." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "IBRAH" &
+    "IM HUSSAIN   :)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ibrahim.hucyn@live.com"
         '
         'GroupControlReportPreivew
         '
@@ -231,15 +236,25 @@ Partial Class frmBarcodeGen
         Me.RptViewer.TabIndex = 4
         Me.RptViewer.TabStop = False
         '
+        'LabelControl2
+        '
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl2.Appearance.Options.UseFont = True
+        Me.LabelControl2.Location = New System.Drawing.Point(7, 72)
+        Me.LabelControl2.Name = "LabelControl2"
+        Me.LabelControl2.Size = New System.Drawing.Size(256, 30)
+        Me.LabelControl2.TabIndex = 11
+        Me.LabelControl2.Text = "Please note that auto print feature has not been " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "implemeted yet."
+        '
         'frmBarcodeGen
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(658, 223)
+        Me.ClientSize = New System.Drawing.Size(658, 222)
         Me.Controls.Add(Me.GroupControlReportPreivew)
         Me.Controls.Add(Me.TabPaneGenerateBarcode)
         Me.Controls.Add(Me.BarcodeControl)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frmBarcodeGen"
@@ -278,4 +293,6 @@ Partial Class frmBarcodeGen
     Friend WithEvents RptViewer As Microsoft.Reporting.WinForms.ReportViewer
     Friend WithEvents TabNavigationPageAbout As DevExpress.XtraBars.Navigation.TabNavigationPage
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents PrintDocument As Printing.PrintDocument
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
 End Class

@@ -8,6 +8,8 @@ Public Class frmBarcodeGen
     Dim SELECTED_BARCODE_PRINTER As String
     Dim USER_PROFILE As String = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
 
+
+
     Private Sub btnGeneratePrintBarcode_Click(sender As Object, e As EventArgs) Handles btnGeneratePrintBarcode.Click
         'VERIFING THAT THE TEXTBOX IS NOT EMPTY BEFORE PROCEEDING TO GENERATE BARCODE
 
@@ -18,7 +20,7 @@ Public Class frmBarcodeGen
 
             'GENERATING A BARCODE ON THE BARCODE CONTROL BY ASSINING THE USER INPUT VALUE TO THE TEXT PROPERTY OF THE BARCODE CONTROL
             Try
-                txtUserInput.Text = txtUserInput.Text.ToUpper
+                ' txtUserInput.Text = txtUserInput.Text.ToUpper  <<<<< THIS CODE IS NOT REQUIRED ANY LONGER.
                 USER_INPUT = txtUserInput.Text
                 BarcodeControl.Text = USER_INPUT
 
@@ -87,6 +89,7 @@ Public Class frmBarcodeGen
 
         'IF IMAGE SAVE FOLDER IN NOT PRESENT, CREAT IT.
         VerifySaveDir()
+
     End Sub
 
     Private Sub CheckBoxAutoPrint_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBoxAutoPrint.CheckStateChanged
@@ -100,5 +103,4 @@ Public Class frmBarcodeGen
     Private Sub comboInstalledPrinters_EditValueChanged(sender As Object, e As EventArgs) Handles comboInstalledPrinters.EditValueChanged
         SELECTED_BARCODE_PRINTER = comboInstalledPrinters.SelectedItem
     End Sub
-
 End Class
