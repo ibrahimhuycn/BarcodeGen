@@ -26,12 +26,12 @@ Partial Public Class XtraReport
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.XrBarcodePanel = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.BarcodeData = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.DateTime = New DevExpress.XtraReports.Parameters.Parameter()
         Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.PatientData = New DevExpress.XtraReports.Parameters.Parameter()
         Me.XrPatientDetails = New DevExpress.XtraReports.UI.XRLabel()
+        Me.BarcodeData = New DevExpress.XtraReports.Parameters.Parameter()
         Me.XrBarCode = New DevExpress.XtraReports.UI.XRBarCode()
-        Me.DateTime = New DevExpress.XtraReports.Parameters.Parameter()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'Detail
@@ -87,29 +87,34 @@ Partial Public Class XtraReport
         Me.XrLabel2.BorderColor = System.Drawing.Color.Transparent
         Me.XrLabel2.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding(Me.DateTime, "Text", "{0:yyyy/MM/dd HH:mm:ss}")})
         Me.XrLabel2.Dpi = 100.0!
-        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(50.0!, 80.49998!)
+        Me.XrLabel2.Font = New System.Drawing.Font("Cambria", 8.0!)
+        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(50.99999!, 80.49997!)
         Me.XrLabel2.Name = "XrLabel2"
         Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel2.SizeF = New System.Drawing.SizeF(197.0!, 15.79166!)
         Me.XrLabel2.StylePriority.UseBorderColor = False
+        Me.XrLabel2.StylePriority.UseFont = False
         Me.XrLabel2.TextTrimming = System.Drawing.StringTrimming.None
         '
-        'BarcodeData
+        'DateTime
         '
-        Me.BarcodeData.Description = "Labels barcode text, Patient Info and DateTime"
-        Me.BarcodeData.Name = "BarcodeData"
-        Me.BarcodeData.Visible = False
+        Me.DateTime.Description = "Sytem date and time when barcode is generated"
+        Me.DateTime.Name = "DateTime"
+        Me.DateTime.Type = GetType(Date)
+        Me.DateTime.Visible = False
         '
         'XrLabel1
         '
         Me.XrLabel1.BorderColor = System.Drawing.Color.Transparent
         Me.XrLabel1.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding(Me.PatientData, "Text", "")})
         Me.XrLabel1.Dpi = 100.0!
-        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(50.0!, 64.70832!)
+        Me.XrLabel1.Font = New System.Drawing.Font("Cambria", 8.0!)
+        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(50.99999!, 64.70833!)
         Me.XrLabel1.Name = "XrLabel1"
         Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel1.SizeF = New System.Drawing.SizeF(197.0!, 15.79166!)
         Me.XrLabel1.StylePriority.UseBorderColor = False
+        Me.XrLabel1.StylePriority.UseFont = False
         Me.XrLabel1.Text = "PatientData"
         Me.XrLabel1.TextTrimming = System.Drawing.StringTrimming.None
         '
@@ -123,35 +128,38 @@ Partial Public Class XtraReport
         Me.XrPatientDetails.BorderColor = System.Drawing.Color.Transparent
         Me.XrPatientDetails.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding(Me.BarcodeData, "Text", "")})
         Me.XrPatientDetails.Dpi = 100.0!
-        Me.XrPatientDetails.LocationFloat = New DevExpress.Utils.PointFloat(49.95835!, 48.91666!)
+        Me.XrPatientDetails.Font = New System.Drawing.Font("Cambria", 8.0!)
+        Me.XrPatientDetails.LocationFloat = New DevExpress.Utils.PointFloat(50.95834!, 48.91666!)
         Me.XrPatientDetails.Name = "XrPatientDetails"
         Me.XrPatientDetails.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrPatientDetails.SizeF = New System.Drawing.SizeF(197.0!, 15.79166!)
         Me.XrPatientDetails.StylePriority.UseBorderColor = False
+        Me.XrPatientDetails.StylePriority.UseFont = False
         Me.XrPatientDetails.Text = "BarcodeData"
         Me.XrPatientDetails.TextTrimming = System.Drawing.StringTrimming.None
+        '
+        'BarcodeData
+        '
+        Me.BarcodeData.Description = "Labels barcode text, Patient Info and DateTime"
+        Me.BarcodeData.Name = "BarcodeData"
+        Me.BarcodeData.Visible = False
         '
         'XrBarCode
         '
         Me.XrBarCode.BorderColor = System.Drawing.Color.Transparent
+        Me.XrBarCode.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
         Me.XrBarCode.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding(Me.BarcodeData, "Text", "")})
         Me.XrBarCode.Dpi = 100.0!
-        Me.XrBarCode.LocationFloat = New DevExpress.Utils.PointFloat(49.95834!, 3.0!)
+        Me.XrBarCode.LocationFloat = New DevExpress.Utils.PointFloat(50.95834!, 3.0!)
         Me.XrBarCode.Module = 1.0!
         Me.XrBarCode.Name = "XrBarCode"
         Me.XrBarCode.Padding = New DevExpress.XtraPrinting.PaddingInfo(10, 10, 0, 0, 100.0!)
         Me.XrBarCode.ShowText = False
         Me.XrBarCode.SizeF = New System.Drawing.SizeF(197.0!, 45.91666!)
         Me.XrBarCode.StylePriority.UseBorderColor = False
+        Me.XrBarCode.StylePriority.UseBorderDashStyle = False
         Code128Generator1.CharacterSet = DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetAuto
         Me.XrBarCode.Symbology = Code128Generator1
-        '
-        'DateTime
-        '
-        Me.DateTime.Description = "Sytem date and time when barcode is generated"
-        Me.DateTime.Name = "DateTime"
-        Me.DateTime.Type = GetType(Date)
-        Me.DateTime.Visible = False
         '
         'XtraReport
         '

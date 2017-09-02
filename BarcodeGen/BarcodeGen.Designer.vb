@@ -57,7 +57,7 @@ Partial Class frmBarcodeGen
         Me.TabNavigationPageAbout.Caption = "About"
         Me.TabNavigationPageAbout.Controls.Add(Me.LabelControl1)
         Me.TabNavigationPageAbout.Name = "TabNavigationPageAbout"
-        Me.TabNavigationPageAbout.Size = New System.Drawing.Size(676, 166)
+        Me.TabNavigationPageAbout.Size = New System.Drawing.Size(687, 182)
         '
         'LabelControl1
         '
@@ -79,7 +79,7 @@ Partial Class frmBarcodeGen
         Me.TabNavigationPrinterSettings.Controls.Add(Me.comboInstalledPrinters)
         Me.TabNavigationPrinterSettings.Controls.Add(Me.CheckBoxAutoPrint)
         Me.TabNavigationPrinterSettings.Name = "TabNavigationPrinterSettings"
-        Me.TabNavigationPrinterSettings.Size = New System.Drawing.Size(676, 166)
+        Me.TabNavigationPrinterSettings.Size = New System.Drawing.Size(687, 182)
         '
         'LabelControl2
         '
@@ -145,12 +145,12 @@ Partial Class frmBarcodeGen
         '
         'BarcodePreview
         '
+        Me.BarcodePreview.AutoZoom = True
         Me.BarcodePreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.BarcodePreview.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BarcodePreview.Font = New System.Drawing.Font("Cambria", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BarcodePreview.IsMetric = False
         Me.BarcodePreview.Location = New System.Drawing.Point(2, 20)
-        Me.BarcodePreview.LookAndFeel.SkinName = "Office 2016 Colorful"
-        Me.BarcodePreview.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat
         Me.BarcodePreview.Name = "BarcodePreview"
         Me.BarcodePreview.ShowPageMargins = False
         Me.BarcodePreview.Size = New System.Drawing.Size(379, 160)
@@ -186,9 +186,10 @@ Partial Class frmBarcodeGen
         'lblBarcode
         '
         Me.lblBarcode.AutoSize = True
+        Me.lblBarcode.Font = New System.Drawing.Font("Cambria", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblBarcode.Location = New System.Drawing.Point(7, 73)
         Me.lblBarcode.Name = "lblBarcode"
-        Me.lblBarcode.Size = New System.Drawing.Size(47, 13)
+        Me.lblBarcode.Size = New System.Drawing.Size(44, 12)
         Me.lblBarcode.TabIndex = 4
         Me.lblBarcode.Text = "Barcode"
         '
@@ -202,9 +203,10 @@ Partial Class frmBarcodeGen
         'lblPatientInfo
         '
         Me.lblPatientInfo.AutoSize = True
+        Me.lblPatientInfo.Font = New System.Drawing.Font("Cambria", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPatientInfo.Location = New System.Drawing.Point(7, 47)
         Me.lblPatientInfo.Name = "lblPatientInfo"
-        Me.lblPatientInfo.Size = New System.Drawing.Size(61, 13)
+        Me.lblPatientInfo.Size = New System.Drawing.Size(59, 12)
         Me.lblPatientInfo.TabIndex = 6
         Me.lblPatientInfo.Text = "Patient Info"
         '
