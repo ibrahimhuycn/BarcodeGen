@@ -6,6 +6,15 @@ Public Class frmBarcodeGen
     Dim DATE_TIME As Date
     Dim SELECTED_BARCODE_PRINTER As String
 
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+        OutputMachineName()
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
+
     Private Sub btnGeneratePrintBarcode_Click(sender As Object, e As EventArgs) Handles btnGeneratePrintBarcode.Click
         USER_INPUT_BARCODE_DATA = Nothing
         PATIENT_DATA = Nothing
@@ -26,6 +35,7 @@ Public Class frmBarcodeGen
             MsgBox("User input is required to generate barcode!")
         End If
 
+        ActiveControl = txtPateintInfo
     End Sub
     Private Sub GenerateAndPrintBarcode()
         Dim XBarcode As XtraReport = New XtraReport()
@@ -42,9 +52,14 @@ Public Class frmBarcodeGen
 
         XBarcode.PrinterName = PrinterSettings.InstalledPrinters.Item(1)
 
-        Dim AutoPrint As New ReportPrintTool(XBarcode)
-        AutoPrint.Print(comboInstalledPrinters.SelectedItem)
+        XBarcode.ShowPrintMarginsWarning = False
 
+        Dim AutoPrint As New ReportPrintTool(XBarcode)
+        Dim printerName As String = (comboInstalledPrinters.SelectedItem)?.ToString()
+        Try
+            AutoPrint.Print(printerName)
+        Catch ex As Exception
+        End Try
     End Sub
 
     Private Sub PopulateInstalledPrintersCombo()
@@ -73,17 +88,13 @@ Public Class frmBarcodeGen
 
     End Sub
 
-    Private Sub CheckBoxAutoPrint_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBoxAutoPrint.CheckStateChanged
-        If CheckBoxAutoPrint.Checked Then
-            btnGeneratePrintBarcode.Text = "Generate | Print"
-        Else
-            btnGeneratePrintBarcode.Text = "Generate Barcode"
-        End If
-    End Sub
-
     Private Sub comboInstalledPrinters_EditValueChanged(sender As Object, e As EventArgs) Handles comboInstalledPrinters.EditValueChanged
         SELECTED_BARCODE_PRINTER = comboInstalledPrinters.SelectedItem
     End Sub
 
+
+    Public Sub OutputMachineName()
+        Debug.WriteLine($"MachineName: {Environment.MachineName}")
+    End Sub
 
 End Class

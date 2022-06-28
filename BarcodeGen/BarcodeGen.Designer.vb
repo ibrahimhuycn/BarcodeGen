@@ -26,10 +26,8 @@ Partial Class frmBarcodeGen
         Me.TabNavigationPageAbout = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.TabNavigationPrinterSettings = New DevExpress.XtraBars.Navigation.TabNavigationPage()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.txtSelectPrinter = New System.Windows.Forms.Label()
         Me.comboInstalledPrinters = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.CheckBoxAutoPrint = New System.Windows.Forms.CheckBox()
         Me.TabNavigationGenerateBarcode = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.GroupControlReportPreivew = New DevExpress.XtraEditors.GroupControl()
         Me.BarcodePreview = New DevExpress.XtraPrinting.Preview.DocumentViewer()
@@ -57,7 +55,7 @@ Partial Class frmBarcodeGen
         Me.TabNavigationPageAbout.Caption = "About"
         Me.TabNavigationPageAbout.Controls.Add(Me.LabelControl1)
         Me.TabNavigationPageAbout.Name = "TabNavigationPageAbout"
-        Me.TabNavigationPageAbout.Size = New System.Drawing.Size(687, 182)
+        Me.TabNavigationPageAbout.Size = New System.Drawing.Size(705, 200)
         '
         'LabelControl1
         '
@@ -74,27 +72,15 @@ Partial Class frmBarcodeGen
         'TabNavigationPrinterSettings
         '
         Me.TabNavigationPrinterSettings.Caption = "Printer Settings"
-        Me.TabNavigationPrinterSettings.Controls.Add(Me.LabelControl2)
         Me.TabNavigationPrinterSettings.Controls.Add(Me.txtSelectPrinter)
         Me.TabNavigationPrinterSettings.Controls.Add(Me.comboInstalledPrinters)
-        Me.TabNavigationPrinterSettings.Controls.Add(Me.CheckBoxAutoPrint)
         Me.TabNavigationPrinterSettings.Name = "TabNavigationPrinterSettings"
-        Me.TabNavigationPrinterSettings.Size = New System.Drawing.Size(687, 182)
-        '
-        'LabelControl2
-        '
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl2.Appearance.Options.UseFont = True
-        Me.LabelControl2.Location = New System.Drawing.Point(7, 72)
-        Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(256, 30)
-        Me.LabelControl2.TabIndex = 11
-        Me.LabelControl2.Text = "Please note that auto print feature has not been " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "implemeted yet."
+        Me.TabNavigationPrinterSettings.Size = New System.Drawing.Size(705, 200)
         '
         'txtSelectPrinter
         '
         Me.txtSelectPrinter.AutoSize = True
-        Me.txtSelectPrinter.Location = New System.Drawing.Point(4, 4)
+        Me.txtSelectPrinter.Location = New System.Drawing.Point(9, 12)
         Me.txtSelectPrinter.Name = "txtSelectPrinter"
         Me.txtSelectPrinter.Size = New System.Drawing.Size(70, 13)
         Me.txtSelectPrinter.TabIndex = 10
@@ -102,23 +88,13 @@ Partial Class frmBarcodeGen
         '
         'comboInstalledPrinters
         '
-        Me.comboInstalledPrinters.Location = New System.Drawing.Point(7, 20)
+        Me.comboInstalledPrinters.Location = New System.Drawing.Point(12, 28)
         Me.comboInstalledPrinters.Name = "comboInstalledPrinters"
         Me.comboInstalledPrinters.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.comboInstalledPrinters.Properties.Sorted = True
         Me.comboInstalledPrinters.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.comboInstalledPrinters.Size = New System.Drawing.Size(257, 20)
         Me.comboInstalledPrinters.TabIndex = 9
-        '
-        'CheckBoxAutoPrint
-        '
-        Me.CheckBoxAutoPrint.AutoSize = True
-        Me.CheckBoxAutoPrint.Location = New System.Drawing.Point(7, 46)
-        Me.CheckBoxAutoPrint.Name = "CheckBoxAutoPrint"
-        Me.CheckBoxAutoPrint.Size = New System.Drawing.Size(71, 17)
-        Me.CheckBoxAutoPrint.TabIndex = 8
-        Me.CheckBoxAutoPrint.Text = "Auto print"
-        Me.CheckBoxAutoPrint.UseVisualStyleBackColor = True
         '
         'TabNavigationGenerateBarcode
         '
@@ -131,15 +107,15 @@ Partial Class frmBarcodeGen
         Me.TabNavigationGenerateBarcode.Controls.Add(Me.txtPateintInfo)
         Me.TabNavigationGenerateBarcode.Controls.Add(Me.lblPatientInfo)
         Me.TabNavigationGenerateBarcode.Name = "TabNavigationGenerateBarcode"
-        Me.TabNavigationGenerateBarcode.Size = New System.Drawing.Size(687, 182)
+        Me.TabNavigationGenerateBarcode.Size = New System.Drawing.Size(705, 200)
         '
         'GroupControlReportPreivew
         '
         Me.GroupControlReportPreivew.Controls.Add(Me.BarcodePreview)
         Me.GroupControlReportPreivew.Dock = System.Windows.Forms.DockStyle.Right
-        Me.GroupControlReportPreivew.Location = New System.Drawing.Point(304, 0)
+        Me.GroupControlReportPreivew.Location = New System.Drawing.Point(322, 0)
         Me.GroupControlReportPreivew.Name = "GroupControlReportPreivew"
-        Me.GroupControlReportPreivew.Size = New System.Drawing.Size(383, 182)
+        Me.GroupControlReportPreivew.Size = New System.Drawing.Size(383, 200)
         Me.GroupControlReportPreivew.TabIndex = 12
         Me.GroupControlReportPreivew.Text = "Barcode Preview"
         '
@@ -153,7 +129,7 @@ Partial Class frmBarcodeGen
         Me.BarcodePreview.Location = New System.Drawing.Point(2, 20)
         Me.BarcodePreview.Name = "BarcodePreview"
         Me.BarcodePreview.ShowPageMargins = False
-        Me.BarcodePreview.Size = New System.Drawing.Size(379, 160)
+        Me.BarcodePreview.Size = New System.Drawing.Size(379, 178)
         Me.BarcodePreview.Status = "Barcode preview."
         Me.BarcodePreview.TabIndex = 1
         Me.BarcodePreview.TooltipFont = New System.Drawing.Font("Cambria", 8.25!)
@@ -170,6 +146,7 @@ Partial Class frmBarcodeGen
         '
         'txtUserInput
         '
+        Me.txtUserInput.EnterMoveNextControl = True
         Me.txtUserInput.Location = New System.Drawing.Point(74, 70)
         Me.txtUserInput.Name = "txtUserInput"
         Me.txtUserInput.Size = New System.Drawing.Size(224, 20)
@@ -195,6 +172,7 @@ Partial Class frmBarcodeGen
         '
         'txtPateintInfo
         '
+        Me.txtPateintInfo.EnterMoveNextControl = True
         Me.txtPateintInfo.Location = New System.Drawing.Point(74, 45)
         Me.txtPateintInfo.Name = "txtPateintInfo"
         Me.txtPateintInfo.Size = New System.Drawing.Size(224, 20)
@@ -255,10 +233,8 @@ Partial Class frmBarcodeGen
     Friend WithEvents TabNavigationPageAbout As DevExpress.XtraBars.Navigation.TabNavigationPage
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents TabNavigationPrinterSettings As DevExpress.XtraBars.Navigation.TabNavigationPage
-    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtSelectPrinter As Label
     Friend WithEvents comboInstalledPrinters As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents CheckBoxAutoPrint As CheckBox
     Friend WithEvents TabNavigationGenerateBarcode As DevExpress.XtraBars.Navigation.TabNavigationPage
     Friend WithEvents GroupControlReportPreivew As DevExpress.XtraEditors.GroupControl
     Friend WithEvents lblInstructions As Label
