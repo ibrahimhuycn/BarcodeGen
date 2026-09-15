@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -10,8 +10,7 @@
     <AssemblyName>BarcodeGen</AssemblyName>
     <ApplicationIcon>BarcodeGen.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Version>1.1.0</Version>
-    <FileVersion>1.1.0.0</FileVersion>
+    <Version>2.0.0</Version>
     <AssemblyTitle>BarcodeGen</AssemblyTitle>
     <Product>BarcodeGen</Product>
     <ReportRuntimeFileName>BarcodeReport.repx</ReportRuntimeFileName>
