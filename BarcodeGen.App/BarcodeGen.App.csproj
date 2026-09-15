@@ -73,8 +73,7 @@
 
   <Target Name="ConvertReportLayout" BeforeTargets="PrepareForBuild">
     <MakeDir Directories="$(MSBuildProjectDirectory)\$(IntermediateOutputPath)generated" />
-    <ConvertVsrepxToRepx SourceFile="$(MSBuildProjectDirectory)\BarcodeReport.vsrepx"
-                         TargetFile="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)" />
+    <ConvertVsrepxToRepx SourceFile="$(MSBuildProjectDirectory)\BarcodeReport.vsrepx" TargetFile="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)" />
   </Target>
 
   <ItemGroup>
@@ -86,16 +85,18 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="BarcodeReport.cs">
+      <DependentUpon>BarcodeReport.vsrepx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
   <Target Name="CopyReportLayoutToOutput" AfterTargets="Build">
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)"
-          DestinationFolder="$(OutDir)"
-          SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
   </Target>
 
   <Target Name="CopyReportLayoutToPublish" AfterTargets="Publish">
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)"
-          DestinationFolder="$(PublishDir)"
-          SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="true" />
   </Target>
 
 </Project>
