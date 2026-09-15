@@ -18,11 +18,16 @@
     <ReportGeneratedFilePath>$(IntermediateOutputPath)generated\BarcodeReport.repx</ReportGeneratedFilePath>
   </PropertyGroup>
 
-
-
+  <!--
+    Only the packages this application actually uses. DevExpress.Win.Reporting pulls the entire
+    suite (Charts, RichEdit, Spreadsheet, Scheduler, Grid, Images, ...) because the report
+    designer can host all of them, which bloats the publish output by ~180 MB.
+  -->
   <ItemGroup>
-    <PackageReference Include="DevExpress.Win.Reporting" Version="25.2.8" />
+    <PackageReference Include="DevExpress.Win.Printing" Version="25.2.8" />
     <PackageReference Include="DevExpress.Win.Navigation" Version="25.2.8" />
+    <PackageReference Include="DevExpress.Printing.Core" Version="25.2.8" />
+    <PackageReference Include="DevExpress.Reporting.Core" Version="25.2.8" />
     <PackageReference Include="DevExpress.Win.Design" Version="25.2.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -30,9 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-
-    <EmbeddedResource Include="BarcodeReport.vsrepx" />
-
+    <None Include="BarcodeReport.vsrepx" />
   </ItemGroup>
 
   <!--
@@ -70,34 +73,29 @@
 
   <Target Name="ConvertReportLayout" BeforeTargets="PrepareForBuild">
     <MakeDir Directories="$(MSBuildProjectDirectory)\$(IntermediateOutputPath)generated" />
-    <ConvertVsrepxToRepx SourceFile="$(MSBuildProjectDirectory)\BarcodeReport.vsrepx" TargetFile="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)" />
-
+    <ConvertVsrepxToRepx SourceFile="$(MSBuildProjectDirectory)\BarcodeReport.vsrepx"
+                         TargetFile="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)" />
   </Target>
 
   <ItemGroup>
     <EmbeddedResource Include="$(ReportGeneratedFilePath)">
       <LogicalName>BarcodeGen.$(ReportRuntimeFileName)</LogicalName>
-
     </EmbeddedResource>
-
-
-
-
-
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="BarcodeReport.cs">
-      <DependentUpon>BarcodeReport.vsrepx</DependentUpon>
-    </Compile>
-    <Compile Update="BarcodeReport.Designer.cs">
-      <DependentUpon>BarcodeReport.vsrepx</DependentUpon>
-    </Compile>
+    <None Include="$(ReportGeneratedFilePath)">
+      <Visible>false</Visible>
+    </None>
   </ItemGroup>
 
   <Target Name="CopyReportLayoutToOutput" AfterTargets="Build">
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)"
+          DestinationFolder="$(OutDir)"
+          SkipUnchangedFiles="true" />
+  </Target>
 
+  <Target Name="CopyReportLayoutToPublish" AfterTargets="Publish">
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)"
+          DestinationFolder="$(PublishDir)"
+          SkipUnchangedFiles="true" />
   </Target>
 
 </Project>
