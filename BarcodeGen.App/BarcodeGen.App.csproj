@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="BarcodeReport.vsrepx" />
+    <EmbeddedResource Include="BarcodeReport.vsrepx" />
   </ItemGroup>
 
   <!--
@@ -86,6 +86,9 @@
 
   <ItemGroup>
     <Compile Update="BarcodeReport.cs">
+      <DependentUpon>BarcodeReport.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="BarcodeReport.Designer.cs">
       <DependentUpon>BarcodeReport.vsrepx</DependentUpon>
     </Compile>
   </ItemGroup>
