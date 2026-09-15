@@ -242,3 +242,7 @@ ModelManifest.xml
 .fake/
 /BarcodeGenInstaller/BarcodeGenInstaller-cache
 /BarcodeGenInstaller
+
+# Report layout generated at build time from BarcodeReport.vsrepx
+BarcodeGen.App/generated/BarcodeReport.repx
+

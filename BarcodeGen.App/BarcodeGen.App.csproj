@@ -1,0 +1,103 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>BarcodeGen</RootNamespace>
+    <AssemblyName>BarcodeGen</AssemblyName>
+    <ApplicationIcon>BarcodeGen.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>1.1.0</Version>
+    <FileVersion>1.1.0.0</FileVersion>
+    <AssemblyTitle>BarcodeGen</AssemblyTitle>
+    <Product>BarcodeGen</Product>
+    <ReportRuntimeFileName>BarcodeReport.repx</ReportRuntimeFileName>
+    <ReportGeneratedFilePath>$(IntermediateOutputPath)generated\BarcodeReport.repx</ReportGeneratedFilePath>
+  </PropertyGroup>
+
+
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.Win.Reporting" Version="25.2.8" />
+    <PackageReference Include="DevExpress.Win.Navigation" Version="25.2.8" />
+    <PackageReference Include="DevExpress.Win.Design" Version="25.2.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <EmbeddedResource Include="BarcodeReport.vsrepx" />
+
+  </ItemGroup>
+
+  <!--
+    BarcodeReport.vsrepx is the editable layout produced by the VS Report Designer.
+    It carries a VSReportExtInfo marker that makes LoadLayoutFromXml refuse to load it,
+    so every build converts it to a standard .repx consumed by the runtime.
+  -->
+  <UsingTask TaskName="ConvertVsrepxToRepx" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <SourceFile ParameterType="System.String" Required="true" />
+      <TargetFile ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" />
+      <Using Namespace="System.IO" />
+      <Using Namespace="System.Xml" />
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        var doc = new XmlDocument();
+        doc.Load(SourceFile);
+        var root = doc.DocumentElement;
+        if (root == null) throw new InvalidOperationException("Empty report layout: " + SourceFile);
+
+        root.SetAttribute("ControlType", "BarcodeGen.BarcodeReport, BarcodeGen");
+
+        var nsm = new XmlNamespaceManager(doc.NameTable);
+        nsm.AddNamespace("dx", root.NamespaceURI);
+        while (root.SelectSingleNode("dx:Extensions", nsm) is XmlNode extensions)
+            root.RemoveChild(extensions);
+
+        Directory.CreateDirectory(Path.GetDirectoryName(TargetFile));
+        doc.Save(TargetFile);
+      ]]></Code>
+    </Task>
+  </UsingTask>
+
+  <Target Name="ConvertReportLayout" BeforeTargets="PrepareForBuild">
+    <MakeDir Directories="$(MSBuildProjectDirectory)\$(IntermediateOutputPath)generated" />
+    <ConvertVsrepxToRepx SourceFile="$(MSBuildProjectDirectory)\BarcodeReport.vsrepx" TargetFile="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)" />
+
+  </Target>
+
+  <ItemGroup>
+    <EmbeddedResource Include="$(ReportGeneratedFilePath)">
+      <LogicalName>BarcodeGen.$(ReportRuntimeFileName)</LogicalName>
+
+    </EmbeddedResource>
+
+
+
+
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="BarcodeReport.cs">
+      <DependentUpon>BarcodeReport.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="BarcodeReport.Designer.cs">
+      <DependentUpon>BarcodeReport.vsrepx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <Target Name="CopyReportLayoutToOutput" AfterTargets="Build">
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(ReportGeneratedFilePath)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+
+  </Target>
+
+</Project>

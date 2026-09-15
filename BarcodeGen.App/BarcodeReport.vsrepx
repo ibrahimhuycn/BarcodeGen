@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="25.2.8.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v25.2, Version=25.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="XtraReport" Dpi="254" SnapGridSize="25" ReportUnit="TenthsOfAMillimeter" Margins="0, 0, 0, 0" PaperKind="Custom" PageWidthF="508" PageHeightF="254" Version="25.2" Font="Cambria, 8pt, style=Italic">
+  <Extensions>
+    <Item1 Ref="1" Key="VSReportExtInfo" Value=".vsrepx" />
+  </Extensions>
+  <Parameters>
+    <Item1 Ref="3" Visible="false" Description="Labels barcode text, Patient Info and DateTime" Name="BarcodeData" />
+    <Item2 Ref="4" Visible="false" Name="PatientData" />
+    <Item3 Ref="6" Visible="false" Description="Sytem date and time when barcode is generated" Name="DateTime" Type="#Ref-5" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="7" ControlType="DetailBand" Name="Detail" Dpi="254" HeightF="254">
+      <Controls>
+        <Item1 Ref="8" ControlType="XRBarCode" Name="XrBarCode" Dpi="254" Alignment="MiddleCenter" TextAlignment="BottomCenter" ShowText="false" AnchorHorizontal="Both" SizeF="508,104.14" LocationFloat="0,16" Padding="25,25,0,0,254" BorderColor="Transparent" BorderDashStyle="Solid">
+          <Symbology Ref="9" Name="Code128" CharacterSet="CharsetAuto" />
+          <ExpressionBindings>
+            <Item1 Ref="10" EventName="BeforePrint" PropertyName="Text" Expression="?BarcodeData" />
+          </ExpressionBindings>
+          <StylePriority Ref="11" UseBorderColor="false" UseBorderDashStyle="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="12" ControlType="XRLabel" Name="XrPatientDetails" Dpi="254" TextTrimming="None" Text="BarcodeData" TextAlignment="MiddleLeft" SizeF="508,31.75" LocationFloat="0,136.14" Font="Cambria, 8pt" Padding="5,5,0,0,254" BorderColor="Transparent">
+          <ExpressionBindings>
+            <Item1 Ref="13" EventName="BeforePrint" PropertyName="Text" Expression="?BarcodeData" />
+          </ExpressionBindings>
+          <StylePriority Ref="14" UseFont="false" UseBorderColor="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="15" ControlType="XRLabel" Name="XrLabel1" Dpi="254" TextTrimming="None" Text="PatientData" TextAlignment="MiddleLeft" SizeF="508,31.75" LocationFloat="0,167.889984" Font="Cambria, 8pt" Padding="5,5,0,0,254" BorderColor="Transparent">
+          <ExpressionBindings>
+            <Item1 Ref="16" EventName="BeforePrint" PropertyName="Text" Expression="?PatientData" />
+          </ExpressionBindings>
+          <StylePriority Ref="17" UseFont="false" UseBorderColor="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="18" ControlType="XRLabel" Name="XrLabel2" Dpi="254" TextFormatString="{0:yyyy/MM/dd HH:mm:ss}" TextTrimming="None" TextAlignment="MiddleLeft" SizeF="508,31.75" LocationFloat="0,199.64" Font="Cambria, 8pt" Padding="5,5,0,0,254" BorderColor="Transparent">
+          <ExpressionBindings>
+            <Item1 Ref="19" EventName="BeforePrint" PropertyName="Text" Expression="?DateTime" />
+          </ExpressionBindings>
+          <StylePriority Ref="20" UseFont="false" UseBorderColor="false" UseTextAlignment="false" />
+        </Item4>
+      </Controls>
+    </Item1>
+    <Item2 Ref="21" ControlType="TopMarginBand" Name="TopMargin" Dpi="254" HeightF="0" />
+    <Item3 Ref="22" ControlType="BottomMarginBand" Name="bottomMarginBand1" Dpi="254" HeightF="0" />
+  </Bands>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v25.2" Ref="5" Content="System.DateTime" Type="System.Type" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>
